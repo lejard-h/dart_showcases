@@ -9,7 +9,11 @@ class Todo {
   static const String contentKey = "content";
   static const String statusKey = "status";
 
-  Todo(this.title, this.content, {this.status = ""});
+  static const String statusPending = "pending";
+  static const String statusDone = "done";
+  static const String statusCanceled = "canceled";
+
+  Todo(this.title, this.content, {this.status = statusPending});
 
   factory Todo.fromJson(String json) => new Todo.fromMap(JSON.decode(json));
 
@@ -17,5 +21,5 @@ class Todo {
       new Todo(map[titleKey], map[contentKey], status: map[statusKey]);
 
   Map<String, dynamic> toMap() =>
-      {titleKey: title, content: content, statusKey: status};
+      {titleKey: title, contentKey: content, statusKey: status};
 }

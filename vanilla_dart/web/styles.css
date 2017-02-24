@@ -12,8 +12,14 @@ main {
     background-color: #efefef;
 }
 
-.page-content {
-    padding-top: 18px;
+.checkbox-container {
+    padding-top: 12px;
+    text-align: center;
+}
+
+.checkbox-container .mdl-checkbox {
+    width: auto;
+    margin: 8px;
 }
 
 .page-content .mdl-card {
@@ -27,11 +33,21 @@ main {
 }
 
 .page-content .mdl-card.done {
+    display: none;
     border-left: 6px solid forestgreen;
 }
 
 .page-content .mdl-card.canceled {
+    display: none;
     border-left: 6px solid orange;
+}
+
+.page-content.done-checked .mdl-card.done {
+    display: block;
+}
+
+.page-content.canceled-checked .mdl-card.canceled {
+    display: block;
 }
 
 .mdl-button--fab {
