@@ -1,0 +1,25 @@
+<modal [visible]="showDialog == true">
+    <material-dialog headered footer
+                     *ngIf="todo != null"
+                     [autoDismissable]="true"
+                     (dismiss)="hide()">
+
+        <div header>
+            <h3>Add a task todo</h3>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #todoForm="ngForm">
+            <material-input floatingLabel label="Title" required [(ngModel)]="todo.title" ngControl="title"></material-input>
+            <material-input multiline rows="5" floatingLabel [(ngModel)]="todo.content" label="Content" ngControl="content"></material-input>
+        </form>
+
+        <div footer>
+            <material-button (trigger)="hide()">
+                Cancel
+            </material-button>
+            <material-button raised class="blue" (trigger)="todoForm.onSubmit()" [disabled]="!todoForm.form.valid">
+                Add
+            </material-button>
+        </div>
+    </material-dialog>
+</modal>

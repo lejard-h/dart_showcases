@@ -1,0 +1,13 @@
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <app-bar></app-bar>
+    <main class="mdl-layout__content">
+        <checkbox-filter></checkbox-filter>
+        <div class="page-content">
+            <todo-list></todo-list>
+        </div>
+        <material-fab raised (trigger)="todoDialog.show()" class="blue fixed">
+            <glyph icon="add"></glyph>
+        </material-fab>
+        <todo-dialog #todoDialog></todo-dialog>
+    </main>
+</div>

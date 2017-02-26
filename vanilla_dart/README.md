@@ -1,5 +1,13 @@
 # Todo List
 
-Simple Todo List made only with dart without any package and with mdl for css.
-
+Simple Todo List:
+ - Dart
+ - MDL
+ 
+## Start
+ 
 Run `pub serve`
+
+## TODOS
+
+- [ ] Comments

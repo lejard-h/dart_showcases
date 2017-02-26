@@ -1,0 +1,83 @@
+/* Copyright (c) 2017, lejard_h. All rights reserved. Use of this source code
+   is governed by a BSD-style license that can be found in the LICENSE file. */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+main {
+  background-color: #efefef;
+}
+
+.checkbox-container {
+  padding-top: 12px;
+  text-align: center;
+}
+
+.page-content .mdl-card {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  min-width: 40%;
+  max-width: 100%;
+  min-height: 100px;
+}
+
+.page-content .mdl-card.done {
+  border-left: 6px solid forestgreen;
+}
+
+.page-content .mdl-card.canceled {
+  border-left: 6px solid orange;
+}
+
+material-fab.fixed {
+  position: fixed !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  margin: 3rem !important;
+}
+
+.mdl-textfield {
+  width: 100%;
+}
+
+.mdl-dialog {
+  min-width: 40%;
+  max-width: 100%;
+}
+
+.blue {
+  background-color: #3F51B5 !important;
+  color: white !important;
+}
+
+.blue:not(.is-raised){
+  color: #3F51B5 !important;
+}
+
+.blue.is-raised{
+  background-color: #3F51B5 !important;
+  color: white !important;
+}
+
+material-dialog {
+  width: 50%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+material-input {
+  width: 100% !important;
+}

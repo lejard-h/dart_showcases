@@ -23,12 +23,9 @@ class Todo {
   factory Todo.fromJson(String json) => new Todo.fromMap(JSON.decode(json));
 
   factory Todo.fromMap(Map map) =>
-      new Todo(map[titleKey], map[contentKey], status: map[statusKey], id: map[idKey]);
+      new Todo(map[titleKey], map[contentKey], status: map[statusKey]);
 
   Map<String, dynamic> toMap() =>
-      {titleKey: title, contentKey: content, statusKey: status, idKey: id};
+      {titleKey: title, contentKey: content, statusKey: status};
 
-  void generateId() {
-    id = "${_rd.nextInt(10000)}-${_rd.nextInt(10000)}-${_rd.nextInt(10000)}";
-  }
 }

@@ -1,0 +1,2 @@
+<todo-card *ngFor="let todo of todos | statusFilter:[filterService.done,filterService.canceled]" [todo]="todo"></todo-card>
+
