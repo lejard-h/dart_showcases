@@ -2,10 +2,11 @@ import 'dart:async';
 import 'package:angular2/angular2.dart';
 import 'package:firebase/firebase.dart';
 import 'package:angular_firebase/firebase.dart';
-import 'package:angular_firebase/model/todo.dart';
+import 'package:shared/models.dart';
+import 'package:shared/client.dart';
 
 @Injectable()
-class TodoService {
+class TodoService implements TodoServiceInterface {
   static const String dbName = "todos";
 
   Firebase _firebase;
@@ -16,7 +17,7 @@ class TodoService {
   Map<String, Todo> get todos => _todos;
 
   void _set(String key, Map data) {
-    _todos[key] = new Todo.fromMap(data);
+    _todos[key] = serializerRepository.from(data, type: Todo);
     _todos[key].id = key;
   }
 
@@ -33,18 +34,23 @@ class TodoService {
     _dbRef.onChildAdded.listen((QueryEvent event) {
       _set(event.snapshot.key, event.snapshot.val());
     });
-
-    _dbRef.onChildChanged.listen((QueryEvent event) {
-      _set(event.snapshot.key, event.snapshot.val());
-    });
   }
 
-  void create(Todo todo) {
-    _dbRef.push(todo.toMap());
+  Future create(Todo todo) async {
+    return _dbRef.push(serializerRepository.to(todo));
   }
 
-  void update(Todo todo) {
+  @override
+  Future read(dynamic id) async => _todos[id];
+
+  Future update(Todo todo) {
     DatabaseReference ref = _dbRef.child(todo.id);
-    ref.update(todo.toMap());
+    return ref.update(serializerRepository.to(todo));
+  }
+
+  @override
+  Future delete(dynamic id) {
+    _todos.remove(id);
+    return _dbRef.child(id).remove();
   }
 }

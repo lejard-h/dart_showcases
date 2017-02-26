@@ -1,0 +1,13 @@
+name: shared
+publish_to: none
+
+environment:
+  sdk: '>=1.19.0 <2.0.0'
+
+dependencies:
+  jaguar_serializer:
+    git: https://github.com/lejard-h/jaguar_serializer.git
+  bson: ^0.2.0
+
+dev_dependencies:
+  grinder: ^0.8.0

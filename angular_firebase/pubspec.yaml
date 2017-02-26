@@ -12,6 +12,8 @@ dependencies:
   firebase: '^3.0.0'
   ng2_fontawesome: '^4.0.0'
   resource: "^2.0.0"
+  shared:
+    path: ../shared
 
 dev_dependencies:
   browser: ^0.10.0

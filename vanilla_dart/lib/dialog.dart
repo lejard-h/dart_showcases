@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'dart:async';
-import 'todo.dart';
+import 'package:shared/models.dart';
 
 class Dialog {
   DialogElement _dialog;
@@ -20,7 +20,9 @@ class Dialog {
   void _setDialogEvents() {
     _dialog.querySelector(".mdl-button.agree").onClick.listen((_) {
       if (_form.checkValidity()) {
-        _close(new Todo(_inputTitle.value, _inputContent.value ?? ""));
+        _close(new Todo()
+          ..title = _inputTitle.value
+          ..content = _inputContent.value ?? "");
         _dialog.close(null);
       }
     });

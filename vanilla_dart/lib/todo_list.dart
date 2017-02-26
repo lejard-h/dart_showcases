@@ -1,6 +1,5 @@
 import 'dart:html';
-import 'dart:convert';
-import 'todo.dart';
+import 'package:shared/models.dart';
 import 'todo_card.dart';
 
 class TodoList {
@@ -18,10 +17,7 @@ class TodoList {
   HtmlElement get element => _element;
 
   TodoList.fromJson(String json, this.onDone, this.onCancel) {
-    List<Map<String, dynamic>> list = JSON.decode(json);
-    for (Map<String, dynamic> todo in list) {
-      _todoList.add(new Todo.fromMap(todo));
-    }
+    _todoList = jsonSerializer.from(json, type: Todo) as List<Todo>;
     _build();
   }
 
@@ -43,6 +39,5 @@ class TodoList {
     _element.append(card.element);
   }
 
-  List<Map<String, dynamic>> toListMap() =>
-      _todoList.map((Todo todo) => todo.toMap()).toList();
+  String toJson() => jsonSerializer.to(_todoList);
 }

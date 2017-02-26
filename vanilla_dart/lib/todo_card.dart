@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'todo.dart';
+import 'package:shared/models.dart';
 
 typedef void TodoAction(Todo todo);
 
@@ -28,7 +28,10 @@ class TodoCard {
     AnchorElement buttonDone = new Element.html(
         '<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Done</a>')
       ..onClick.listen((_) {
-        _element.classes.remove(todo.status);
+        if (_element.classes.contains(todo.status)) {
+          _element.classes.remove(todo.status);
+        }
+
         todo.status = Todo.statusDone;
         _element.classes.add(todo.status);
         if (onDone != null) {
@@ -39,7 +42,9 @@ class TodoCard {
     AnchorElement buttonCancel = new Element.html(
         '<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Cancel</a>')
       ..onClick.listen((_) {
-        _element.classes.remove(todo.status);
+        if (_element.classes.contains(todo.status)) {
+          _element.classes.remove(todo.status);
+        }
         todo.status = Todo.statusCanceled;
         _element.classes.add(todo.status);
         if (onCancel != null) {

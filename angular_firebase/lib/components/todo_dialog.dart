@@ -1,7 +1,7 @@
 import 'package:angular2/core.dart';
 import 'package:angular_firebase/services/todo.dart';
 import 'package:angular2_components/angular2_components.dart';
-import 'package:angular_firebase/model/todo.dart';
+import 'package:shared/models.dart';
 
 @Component(selector: 'todo-dialog', templateUrl: 'todo_dialog.html', directives: const [materialDirectives])
 class TodoDialog {
@@ -17,7 +17,7 @@ class TodoDialog {
   }
 
   void show() {
-    todo = new Todo("", "");
+    todo = new Todo();
     showDialog = true;
   }
 

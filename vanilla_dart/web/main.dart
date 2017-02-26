@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'package:vanilla_dart/app.dart';
 import 'package:vanilla_dart/dialog.dart';
-import 'package:vanilla_dart/todo.dart';
+import 'package:shared/models.dart';
 
 void main() {
   App app = new App();

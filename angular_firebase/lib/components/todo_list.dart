@@ -1,9 +1,8 @@
 import 'package:angular2/core.dart';
 import 'package:angular_firebase/services/todo.dart';
 import 'package:angular_firebase/services/checkbox_filter.dart';
-import 'package:angular_firebase/model/todo.dart';
+import 'package:shared/models.dart';
 import 'todo_card.dart';
-
 
 @Component(
     selector: 'todo-list', templateUrl: 'todo_list.html', directives: const [TodoCard], pipes: const [StatusFilter])
@@ -22,7 +21,7 @@ class StatusFilter implements PipeTransform {
     bool done = args?.length >= 1 && args[0] == true;
     bool canceled = args?.length >= 2 && args[1] == true;
 
-    return todos?.where((Todo todo) =>
+    return todos?.where((Todo todo) => todo.status == null ||
     todo.status == Todo.statusPending || (done == true && todo.status == Todo.statusDone) ||
         (canceled == true && todo.status == Todo.statusCanceled));
   }

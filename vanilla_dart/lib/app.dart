@@ -1,6 +1,5 @@
 import 'dart:html';
-import 'dart:convert';
-import 'todo.dart';
+import 'package:shared/models.dart';
 import 'todo_list.dart';
 
 class App {
@@ -28,11 +27,11 @@ class App {
   }
 
   void _onAction(Todo todo) {
-    window.localStorage[_storageKey] = JSON.encode(_list.toListMap());
+    window.localStorage[_storageKey] = _list.toJson();
   }
 
   void addTodo(Todo todo) {
     _list.addTodo(todo);
-    window.localStorage[_storageKey] = JSON.encode(_list.toListMap());
+    window.localStorage[_storageKey] = _list.toJson();
   }
 }
