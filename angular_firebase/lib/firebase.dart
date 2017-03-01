@@ -1,9 +1,8 @@
 import 'dart:async';
-import 'package:resource/resource.dart' show Resource;
 import 'package:firebase/firebase.dart' show initializeApp, database, Database;
-import 'package:yaml/yaml.dart' show loadYaml;
+import 'package:fnx_config/fnx_config_read.dart';
 
-const String _firebaseConfigFile = "firebase.yaml";
+const String _firebaseConfigKey = "firebase";
 const String _apiKey = "api_key";
 const String _authDomain = "auth_domain";
 const String _databaseUrl = "database_url";
@@ -11,10 +10,7 @@ const String _storageBucket = "storage_bucket";
 const String _messagingSenderId = "messaging_sender_id";
 
 Future<Firebase> initFirebase() async {
-  Resource resource =
-      new Resource('$_firebaseConfigFile');
-  String content = await resource.readAsString();
-  Map<String, String> config = loadYaml(content);
+  Map<String, String> config = fnxConfig()[_firebaseConfigKey];
 
   initializeApp(
       apiKey: config[_apiKey],

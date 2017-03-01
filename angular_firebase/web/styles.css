@@ -81,3 +81,22 @@ form {
 material-input {
   width: 100% !important;
 }
+
+.spinner-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mdl-card__title.title {
+  display: flex;
+  flex-direction: row;
+}
+
+.mdl-card__title.title h2 {
+  display: flex;
+  flex: 1;
+}
